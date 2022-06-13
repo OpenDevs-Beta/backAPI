@@ -1,11 +1,12 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
+import { TipoSector } from 'App/Models/Contracts/TipoSector'
 
 export default class extends BaseSchema {
   protected tableName = 'empresas'
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
+      table.increments('id').primary()
 
       table.string('nombre').notNullable().unique()
       table.text('descripcion').notNullable()
@@ -13,7 +14,11 @@ export default class extends BaseSchema {
       table.text('enlace_twitter')
       table.text('enlace_linkedin')
       table.string('num_empleados')
-      table.integer('creacion')
+      table.string('avatar')
+      table.enu('sector', Object.values(TipoSector)).defaultTo(TipoSector.INFORMATICA).notNullable()
+      table.date('creacion').notNullable()
+
+      table.integer('user_id').unsigned().references('users.id').index()
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

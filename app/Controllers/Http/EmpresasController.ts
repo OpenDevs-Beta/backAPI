@@ -14,6 +14,7 @@ export default class EmpresasController {
     const order = validatedData.order || 'asc'
 
     const empresas = await Empresa.query()
+      .preload('user')
       .preload('ofertas')
       .orderBy(sortBy, order)
       .paginate(page, limit)
