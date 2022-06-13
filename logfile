@@ -1,0 +1,34 @@
+2022-06-08 23:08:48.167 CEST [7440] LOG:  starting PostgreSQL 13.1 on x86_64-apple-darwin20.1.0, compiled by Apple clang version 12.0.0 (clang-1200.0.32.27), 64-bit
+2022-06-08 23:08:48.177 CEST [7440] LOG:  listening on IPv6 address "::1", port 5432
+2022-06-08 23:08:48.177 CEST [7440] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-06-08 23:08:48.177 CEST [7440] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-06-08 23:08:48.200 CEST [7441] LOG:  database system was shut down at 2022-04-13 09:57:57 CEST
+2022-06-08 23:08:48.218 CEST [7440] LOG:  database system is ready to accept connections
+2022-06-08 23:10:09.525 CEST [7474] ERROR:  syntax error at or near "createdb" at character 1
+2022-06-08 23:10:09.525 CEST [7474] STATEMENT:  createdb ttt
+	grant all privileges on database ttt to postgres;
+2022-06-08 23:10:18.479 CEST [7474] ERROR:  syntax error at or near "createdb" at character 1
+2022-06-08 23:10:18.479 CEST [7474] STATEMENT:  createdb ttt;
+2022-06-08 23:33:48.186 CEST [8197] ERROR:  relation "empresas" does not exist at character 15
+2022-06-08 23:33:48.186 CEST [8197] STATEMENT:  select * from "empresas" order by "id" desc
+2022-06-09 00:01:09.991 CEST [9389] ERROR:  column "nombre, descripcion" does not exist at character 8
+2022-06-09 00:01:09.991 CEST [9389] STATEMENT:  select "nombre, descripcion", "id" from "empresas" where "id" in ($1)
+2022-06-09 00:01:28.414 CEST [9404] ERROR:  column "nombre,descripcion" does not exist at character 8
+2022-06-09 00:01:28.414 CEST [9404] STATEMENT:  select "nombre,descripcion", "id" from "empresas" where "id" in ($1)
+2022-06-09 00:07:18.310 CEST [7655] ERROR:  null value in column "descripcion" of relation "ofertas" violates not-null constraint
+2022-06-09 00:07:18.310 CEST [7655] DETAIL:  Failing row contains (1, Backend Dev, null, null, junior, 1, null, null).
+2022-06-09 00:07:18.310 CEST [7655] STATEMENT:  BEGIN;
+	INSERT INTO "public"."ofertas"("nombre", "empresa_id") VALUES('Backend Dev', 1) RETURNING "id", "nombre", "descripcion", "ubicacion", "experiencia", "empresa_id", "created_at", "updated_at";
+	
+2022-06-09 00:08:14.341 CEST [9650] ERROR:  relation "habilidads" does not exist at character 250
+2022-06-09 00:08:14.341 CEST [9650] STATEMENT:  select "habilidads".*, "habilidad_oferta"."oferta_id" as "pivot_oferta_id", "habilidad_oferta"."habilidad_id" as "pivot_habilidad_id", "habilidad_oferta"."created_at" as "pivot_created_at", "habilidad_oferta"."updated_at" as "pivot_updated_at" from "habilidads" inner join "habilidad_oferta" on "habilidads"."id" = "habilidad_oferta"."habilidad_id" where "habilidad_oferta"."oferta_id" in ($1)
+2022-06-09 00:08:16.008 CEST [9654] ERROR:  relation "habilidads" does not exist at character 250
+2022-06-09 00:08:16.008 CEST [9654] STATEMENT:  select "habilidads".*, "habilidad_oferta"."oferta_id" as "pivot_oferta_id", "habilidad_oferta"."habilidad_id" as "pivot_habilidad_id", "habilidad_oferta"."created_at" as "pivot_created_at", "habilidad_oferta"."updated_at" as "pivot_updated_at" from "habilidads" inner join "habilidad_oferta" on "habilidads"."id" = "habilidad_oferta"."habilidad_id" where "habilidad_oferta"."oferta_id" in ($1)
+2022-06-09 00:10:23.650 CEST [7655] ERROR:  null value in column "descripcion" of relation "ofertas" violates not-null constraint
+2022-06-09 00:10:23.650 CEST [7655] DETAIL:  Failing row contains (1, Backend Dev, null, null, junior, 1, null, null).
+2022-06-09 00:10:23.650 CEST [7655] STATEMENT:  BEGIN;
+	INSERT INTO "public"."ofertas"("nombre", "empresa_id") VALUES('Backend Dev', 1) RETURNING "id", "nombre", "descripcion", "ubicacion", "experiencia", "empresa_id", "created_at", "updated_at";
+	
+2022-06-09 00:11:02.183 CEST [9785] ERROR:  relation "habilidads" does not exist at character 250
+2022-06-09 00:11:02.183 CEST [9785] STATEMENT:  select "habilidads".*, "habilidad_oferta"."oferta_id" as "pivot_oferta_id", "habilidad_oferta"."habilidad_id" as "pivot_habilidad_id", "habilidad_oferta"."created_at" as "pivot_created_at", "habilidad_oferta"."updated_at" as "pivot_updated_at" from "habilidads" inner join "habilidad_oferta" on "habilidads"."id" = "habilidad_oferta"."habilidad_id" where "habilidad_oferta"."oferta_id" in ($1)
+2022-06-09 00:12:39.604 CEST [9852] LOG:  could not receive data from client: Connection reset by peer

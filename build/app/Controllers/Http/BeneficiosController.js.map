@@ -1,0 +1,1 @@
+{"version":3,"file":"BeneficiosController.js","sourceRoot":"","sources":["../../../../app/Controllers/Http/BeneficiosController.ts"],"names":[],"mappings":";;;;;AACA,2FAA4C;AAE5C,MAAqB,oBAAoB;IAChC,KAAK,CAAC,KAAK,CAAC,EAAE,QAAQ,EAAuB;QAClD,MAAM,UAAU,GAAG,MAAM,mBAAS,CAAC,KAAK,EAAE,CAAA;QAE1C,QAAQ,CAAC,EAAE,CAAC,EAAE,IAAI,EAAE,UAAU,EAAE,CAAC,CAAA;IACnC,CAAC;CACF;AAND,uCAMC"}

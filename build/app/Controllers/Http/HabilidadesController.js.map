@@ -1,0 +1,1 @@
+{"version":3,"file":"HabilidadesController.js","sourceRoot":"","sources":["../../../../app/Controllers/Http/HabilidadesController.ts"],"names":[],"mappings":";;;;;AACA,2FAA4C;AAE5C,MAAqB,qBAAqB;IACjC,KAAK,CAAC,KAAK,CAAC,EAAE,QAAQ,EAAuB;QAClD,MAAM,WAAW,GAAG,MAAM,mBAAS,CAAC,KAAK,EAAE,CAAA;QAE3C,QAAQ,CAAC,EAAE,CAAC,EAAE,IAAI,EAAE,WAAW,EAAE,CAAC,CAAA;IACpC,CAAC;CACF;AAND,wCAMC"}
