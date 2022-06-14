@@ -19,7 +19,7 @@ export default class CreateEmpresaValidator {
     numEmpleados: schema.string.optional({}),
     avatar: schema.string.optional({}),
     sector: schema.enum(Object.values(TipoSector)),
-    creacion: schema.date.optional({
+    creado: schema.date.optional({
       format: 'yyyy-MM-dd',
     }),
   })

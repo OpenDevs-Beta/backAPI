@@ -31,7 +31,7 @@ export default class Empresa extends AppBaseModel {
   public sector: TipoSector
 
   @column()
-  public creacion: DateTime
+  public creado: DateTime
 
   @column()
   public userId: number
