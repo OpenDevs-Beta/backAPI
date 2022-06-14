@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class UsersSchema extends BaseSchema {
@@ -8,6 +9,9 @@ export default class UsersSchema extends BaseSchema {
       table.increments('id').primary()
       table.string('email', 255).notNullable()
       table.string('password', 180).notNullable()
+      table.string('nombre_completo', 255).notNullable()
+      table.string('telefono', 255).notNullable()
+      table.boolean('is_admin').defaultTo(false)
       table.string('remember_me_token').nullable()
 
       /**
