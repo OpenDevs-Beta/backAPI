@@ -10,7 +10,7 @@
     "format": "prettier --write ."
   },
   "engines": {
-    "node": "16.13.2"
+    "node": "16.14"
   },
   "eslintConfig": {
     "extends": [
