@@ -21,31 +21,39 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.group(() => {
-  // Unprotected routes
   Route.post('/register', 'UsersController.store')
   Route.post('/login', 'AuthController.login')
-  Route.group(() => {
-    Route.get('', 'OfertasController.index')
-    Route.get('/:id', 'OfertasController.show')
-  }).prefix('/ofertas')
 
-  // Protected routes
-  Route.group(() => {
-    Route.resource('/empresas', 'EmpresasController').apiOnly()
-    Route.resource('/beneficios', 'BeneficiosController').apiOnly()
-    Route.resource('/habilidades', 'HabilidadesController').apiOnly()
-    Route.group(() => {
-      Route.get('', 'UsersController.index')
-      Route.get('/:id', 'UsersController.show')
-      Route.put('', 'UsersController.update')
-      Route.delete('', 'UsersController.destroy')
-    }).prefix('/users')
-    Route.group(() => {
-      Route.resource('/ofertas', 'OfertasController').middleware({
-        create: ['auth'],
-        store: ['auth'],
-        destroy: ['auth'],
-      })
-    }).prefix('/ofertas')
-  }).middleware('auth:api')
+  Route.resource('/users', 'UsersController')
+    .except(['store'])
+    .middleware({
+      '*': ['auth:api'],
+    })
+    .apiOnly()
+
+  Route.resource('/empresas', 'EmpresasController')
+    .middleware({
+      '*': ['auth:api'],
+    })
+    .apiOnly()
+
+  Route.resource('/beneficios', 'BeneficiosController')
+    .middleware({
+      '*': ['auth:api'],
+    })
+    .apiOnly()
+
+  Route.resource('/habilidades', 'HabilidadesController')
+    .middleware({
+      '*': ['auth:api'],
+    })
+    .apiOnly()
+
+  Route.resource('/ofertas', 'OfertasController')
+    .middleware({
+      create: ['auth'],
+      store: ['auth'],
+      destroy: ['auth'],
+    })
+    .apiOnly()
 }).prefix('/api')
