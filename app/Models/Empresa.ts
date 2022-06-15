@@ -1,6 +1,9 @@
-import { column, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
+import { column, hasMany, HasMany, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
+import { DateTime } from 'luxon'
 import AppBaseModel from './AppBaseModel'
+import { TipoSector } from './Contracts/TipoSector'
 import Oferta from './Oferta'
+import User from './User'
 
 export default class Empresa extends AppBaseModel {
   @column()
@@ -8,6 +11,9 @@ export default class Empresa extends AppBaseModel {
 
   @column()
   public descripcion: string
+
+  @column()
+  public enlaceWeb: string
 
   @column()
   public enlaceTwitter: string
@@ -19,7 +25,19 @@ export default class Empresa extends AppBaseModel {
   public numEmpleados: string
 
   @column()
-  public creacion: number
+  public avatar: string
+
+  @column()
+  public sector: TipoSector
+
+  @column()
+  public creado: DateTime
+
+  @column()
+  public userId: number
+
+  @belongsTo(() => User)
+  public user: BelongsTo<typeof User>
 
   @hasMany(() => Oferta)
   public ofertas: HasMany<typeof Oferta>

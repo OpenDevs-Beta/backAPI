@@ -20,19 +20,32 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.post('login', 'AuthController.login')
-
-Route.resource('/users', 'UsersController').apiOnly()
-Route.resource('/ofertas', 'OfertasController').apiOnly()
-
 Route.group(() => {
-  Route.resource('/empresas', 'EmpresasController').apiOnly()
-})
-// .middleware('auth')
-// .prefix('/api')
-// Route.group(() => {
-//   Route.resource('/habilidades', 'HabilidadesController').apiOnly()
-//   Route.resource('/beneficios', 'BeneficiosController').apiOnly()
-// })
-// .middleware('auth')
-// .prefix('/admin')
+  // Unprotected routes
+  Route.post('/register', 'UsersController.store')
+  Route.post('/login', 'AuthController.login')
+  Route.group(() => {
+    Route.get('', 'OfertasController.index')
+    Route.get('/:id', 'OfertasController.show')
+  }).prefix('/ofertas')
+
+  // Protected routes
+  Route.group(() => {
+    Route.resource('/empresas', 'EmpresasController').apiOnly()
+    Route.resource('/beneficios', 'BeneficiosController').apiOnly()
+    Route.resource('/habilidades', 'HabilidadesController').apiOnly()
+    Route.group(() => {
+      Route.get('', 'UsersController.index')
+      Route.get('/:id', 'UsersController.show')
+      Route.put('', 'UsersController.update')
+      Route.delete('', 'UsersController.destroy')
+    }).prefix('/users')
+    Route.group(() => {
+      Route.resource('/ofertas', 'OfertasController').middleware({
+        create: ['auth'],
+        store: ['auth'],
+        destroy: ['auth'],
+      })
+    }).prefix('/ofertas')
+  }).middleware('auth:api')
+}).prefix('/api')
