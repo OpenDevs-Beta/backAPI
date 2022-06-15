@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { column, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
 import AppBaseModel from './AppBaseModel'
 import Oferta from './Oferta'

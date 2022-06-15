@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -27,6 +28,11 @@ Route.resource('/ofertas', 'OfertasController').apiOnly()
 
 Route.group(() => {
   Route.resource('/empresas', 'EmpresasController').apiOnly()
+  Route.post('/crearUsuario', 'UsersController.store')
+  Route.get('/indexUsers', 'UsersController.index')
+  Route.post('/indexOfertas', 'OfertasController.index')
+  Route.post('/indexEmpresas', 'EmpresasController.index')
+  Route.post('/crearEmpresa', 'EmpresasController.store')
 })
 // .middleware('auth')
 // .prefix('/api')
