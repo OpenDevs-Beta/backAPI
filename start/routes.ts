@@ -22,7 +22,7 @@ import Route from '@ioc:Adonis/Core/Route'
 
 Route.group(() => {
   // Unprotected routes
-  Route.post('/users', 'UsersController.store')
+  Route.post('/register', 'UsersController.store')
   Route.post('/login', 'AuthController.login')
   Route.group(() => {
     Route.get('', 'OfertasController.index')
@@ -41,9 +41,11 @@ Route.group(() => {
       Route.delete('', 'UsersController.destroy')
     }).prefix('/users')
     Route.group(() => {
-      Route.post('', 'OfertasController.store')
-      Route.put('', 'OfertasController.update')
-      Route.delete('', 'OfertasController.destroy')
+      Route.resource('/ofertas', 'OfertasController').middleware({
+        create: ['auth'],
+        store: ['auth'],
+        destroy: ['auth'],
+      })
     }).prefix('/ofertas')
   }).middleware('auth:api')
 }).prefix('/api')
