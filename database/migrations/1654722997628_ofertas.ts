@@ -2,6 +2,7 @@ import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 import { TipoExperiencia } from 'App/Models/Contracts/TipoExperiencia'
 import { TipoPresencialidad } from 'App/Models/Contracts/TipoPresencialidad'
 
+
 export default class extends BaseSchema {
   protected tableName = 'ofertas'
 
@@ -30,6 +31,9 @@ export default class extends BaseSchema {
       table.string('idiomas_requeridos')
 
       
+
+      
+      
       
 
       table.string('nombre').notNullable()
@@ -51,5 +55,12 @@ export default class extends BaseSchema {
 
   public async down() {
     this.schema.dropTable(this.tableName)
+  }
+
+  public async up() {
+    this.schema.createTable(this.tableName, (table) => {
+      table.increments()
+      table.json('avatar') // <-- Use a JSON data type
+    })
   }
 }

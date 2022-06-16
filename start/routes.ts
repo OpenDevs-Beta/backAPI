@@ -19,6 +19,7 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import OfertasController from 'App/Controllers/Http/OfertasController'
 
 Route.post('login', 'AuthController.login')
 
@@ -36,3 +37,4 @@ Route.group(() => {
 // })
 // .middleware('auth')
 // .prefix('/admin')
+

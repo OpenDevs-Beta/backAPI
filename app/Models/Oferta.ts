@@ -1,4 +1,9 @@
 import { belongsTo, BelongsTo, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel } from '@ioc:Adonis/Lucid/Orm'
+import {
+  attachment,
+  AttachmentContract
+} from '@ioc:Adonis/Addons/AttachmentLite'
 import AppBaseModel from './AppBaseModel'
 import Beneficio from './Beneficio'
 import { TipoExperiencia } from './Contracts/TipoExperiencia'
@@ -50,6 +55,15 @@ export default class Oferta extends AppBaseModel {
 
   @column()
   public empresaId: number
+
+  
+  class User extends BaseModel {
+    // Make "avatar" as attachment
+    @attachment()
+    public avatar: AttachmentContract
+  }
+
+  
 
   @belongsTo(() => Empresa)
   public empresa: BelongsTo<typeof Empresa>
