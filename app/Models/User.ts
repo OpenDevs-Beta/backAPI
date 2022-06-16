@@ -1,6 +1,7 @@
 import Hash from '@ioc:Adonis/Core/Hash'
 import { column, beforeSave } from '@ioc:Adonis/Lucid/Orm'
-import AppBaseModel from './AppBaseModel'
+import AppBaseModel from 'App/Models/AppBaseModel'
+import { TipoRol } from 'App/Models/Contracts/TipoRol'
 
 export default class User extends AppBaseModel {
   @column()
@@ -8,6 +9,9 @@ export default class User extends AppBaseModel {
 
   @column({ serializeAs: null })
   public password: string
+
+  @column()
+  public rol: TipoRol
 
   @column()
   public rememberMeToken?: string
