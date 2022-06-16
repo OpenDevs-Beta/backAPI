@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
 import CreateUserValidator from 'App/Validators/CreateUserValidator'
@@ -22,8 +23,7 @@ export default class UsersController {
     const validatedData = await request.validate(CreateUserValidator)
 
     const user = await User.create(validatedData)
-
-    return response.created({ data: user })
+    return user.save()
   }
 
   public async update({ request, response, params: { id } }: HttpContextContract) {
