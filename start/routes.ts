@@ -1,23 +1,3 @@
-/*
-|--------------------------------------------------------------------------
-| Routes
-|--------------------------------------------------------------------------
-|
-| This file is dedicated for defining HTTP routes. A single file is enough
-| for majority of projects, however you can define routes in different
-| files and just make sure to import them inside this file. For example
-|
-| Define routes in following two files
-| ├── start/routes/cart.ts
-| ├── start/routes/customer.ts
-|
-| and then import them inside `start/routes.ts` as follows
-|
-| import './routes/cart'
-| import './routes/customer'
-|
-*/
-
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.group(() => {
@@ -35,57 +15,13 @@ Route.group(() => {
     Route.resource('/beneficios', 'BeneficiosController').apiOnly()
     Route.resource('/habilidades', 'HabilidadesController').apiOnly()
     Route.resource('/users', 'UsersController').apiOnly()
-    Route.group(() => {
+  }).middleware('auth:api')
+  Route.group(() => {
       Route.resource('/ofertas', 'OfertasController').middleware({
         create: ['auth'],
         store: ['auth'],
         destroy: ['auth'],
       })
-    }).prefix('/ofertas')
-  }).middleware('auth:api')
+   }).prefix('/ofertas')
 }).prefix('/api')
 
-/* eslint-disable prettier/prettier */
-/*
-|--------------------------------------------------------------------------
-| Routes
-|--------------------------------------------------------------------------
-|
-| This file is dedicated for defining HTTP routes. A single file is enough
-| for majority of projects, however you can define routes in different
-| files and just make sure to import them inside this file. For example
-|
-| Define routes in following two files
-| ├── start/routes/cart.ts
-| ├── start/routes/customer.ts
-|
-| and then import them inside `start/routes.ts` as follows
-|
-| import './routes/cart'
-| import './routes/customer'
-|
-*/
-
-import Route from '@ioc:Adonis/Core/Route'
-
-Route.post('login', 'AuthController.login')
-
-Route.resource('/users', 'UsersController').apiOnly()
-Route.resource('/ofertas', 'OfertasController').apiOnly()
-
-Route.group(() => {
-  Route.resource('/empresas', 'EmpresasController').apiOnly()
-  Route.post('/crearUsuario', 'UsersController.store')
-  Route.get('/indexUsers', 'UsersController.index')
-  Route.post('/indexOfertas', 'OfertasController.index')
-  Route.post('/indexEmpresas', 'EmpresasController.index')
-  Route.post('/crearEmpresa', 'EmpresasController.store')
-})
-// .middleware('auth')
-// .prefix('/api')
-// Route.group(() => {
-//   Route.resource('/habilidades', 'HabilidadesController').apiOnly()
-//   Route.resource('/beneficios', 'BeneficiosController').apiOnly()
-// })
-// .middleware('auth')
-// .prefix('/admin')
