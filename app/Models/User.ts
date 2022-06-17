@@ -1,7 +1,7 @@
-/* eslint-disable prettier/prettier */
 import Hash from '@ioc:Adonis/Core/Hash'
 import { column, beforeSave } from '@ioc:Adonis/Lucid/Orm'
-import AppBaseModel from './AppBaseModel'
+import AppBaseModel from 'App/Models/AppBaseModel'
+import { TipoRol } from 'App/Models/Contracts/TipoRol'
 
 export default class User extends AppBaseModel {
   @column()
@@ -11,13 +11,7 @@ export default class User extends AppBaseModel {
   public password: string
 
   @column()
-  public nombre_completo : string
-
-  @column()
-  public telefono : string
-
-  @column()
-  public is_admin : boolean = false
+  public rol: TipoRol
 
   @column()
   public rememberMeToken?: string
