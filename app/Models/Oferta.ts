@@ -63,7 +63,6 @@ export default class Oferta extends AppBaseModel {
     public avatar: AttachmentContract
   }
 
-  
 
   @belongsTo(() => Empresa)
   public empresa: BelongsTo<typeof Empresa>

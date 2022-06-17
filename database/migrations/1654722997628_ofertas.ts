@@ -31,9 +31,6 @@ export default class extends BaseSchema {
       table.string('idiomas_requeridos')
 
       
-
-      
-      
       
 
       table.string('nombre').notNullable()
