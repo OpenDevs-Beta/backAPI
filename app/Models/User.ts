@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Hash from '@ioc:Adonis/Core/Hash'
 import { column, beforeSave } from '@ioc:Adonis/Lucid/Orm'
 import AppBaseModel from './AppBaseModel'
@@ -8,6 +9,15 @@ export default class User extends AppBaseModel {
 
   @column({ serializeAs: null })
   public password: string
+
+  @column()
+  public nombre_completo : string
+
+  @column()
+  public telefono : string
+
+  @column()
+  public is_admin : boolean = false
 
   @column()
   public rememberMeToken?: string
