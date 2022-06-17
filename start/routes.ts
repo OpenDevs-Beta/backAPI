@@ -34,12 +34,7 @@ Route.group(() => {
     Route.resource('/empresas', 'EmpresasController').apiOnly()
     Route.resource('/beneficios', 'BeneficiosController').apiOnly()
     Route.resource('/habilidades', 'HabilidadesController').apiOnly()
-    Route.group(() => {
-      Route.get('', 'UsersController.index')
-      Route.get('/:id', 'UsersController.show')
-      Route.put('', 'UsersController.update')
-      Route.delete('', 'UsersController.destroy')
-    }).prefix('/users')
+    Route.resource('/users', 'UsersController').apiOnly()
     Route.group(() => {
       Route.resource('/ofertas', 'OfertasController').middleware({
         create: ['auth'],
