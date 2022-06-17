@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from '@ioc:Adonis/Lucid/Database'
 import Empresa from 'App/Models/Empresa'
