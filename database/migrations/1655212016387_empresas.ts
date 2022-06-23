@@ -10,7 +10,6 @@ export default class extends BaseSchema {
       table.enu('sector', Object.values(TipoSector)).defaultTo(TipoSector.INFORMATICA).notNullable()
       table.dropColumn('creacion')
       table.date('creado').notNullable()
-      table.integer('user_id').unsigned().references('users.id').index()
     })
   }
 
