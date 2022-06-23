@@ -1,7 +1,7 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class RoleHasPermissions extends BaseSchema {
-  protected tableName = 'rol_permiso'
+export default class extends BaseSchema {
+  protected tableName = 'user_permiso'
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
@@ -11,7 +11,7 @@ export default class RoleHasPermissions extends BaseSchema {
         .references('id')
         .inTable('permisos')
         .onDelete('CASCADE')
-      table.integer('model_id').unsigned().references('id').inTable('roles').onDelete('CASCADE')
+      table.integer('model_id').unsigned().references('id').inTable('users').onDelete('CASCADE')
       table.unique(['permission_id', 'model_id'])
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
