@@ -43,6 +43,7 @@ export default class extends BaseSchema {
       table.text('enlace_linkedin')
       table.string('num_empleados')
       table.integer('creacion')
+
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

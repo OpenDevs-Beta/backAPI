@@ -13,7 +13,11 @@ export default class CreateEmpresaValidator {
       }),
     ]),
     descripcion: schema.string({}),
+<<<<<<< HEAD
+    url: schema.string({}),
+=======
     enlaceWeb: schema.string.optional({}),
+>>>>>>> 705fe59666b28bffa5b8032d0f0e1d537bfde782
     enlaceTwitter: schema.string.optional({}),
     enlaceLinkedin: schema.string.optional({}),
     numEmpleados: schema.string.optional({}),

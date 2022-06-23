@@ -40,7 +40,6 @@
     "printWidth": 100
   },
   "devDependencies": {
-    "@adonisjs/assembler": "^5.7.0",
     "@japa/preset-adonis": "^1.1.0",
     "@japa/runner": "^2.0.9",
     "adonis-preset-ts": "^2.1.0",
@@ -54,8 +53,11 @@
     "youch-terminal": "^2.1.4"
   },
   "dependencies": {
+    "@adonisjs/assembler": "^5.7.0",
+    "@adonisjs/attachment-lite": "^1.0.7",
     "@adonisjs/auth": "^8.2.1",
     "@adonisjs/core": "^5.8.3",
+    "@adonisjs/drive-gcs": "^1.1.1",
     "@adonisjs/lucid": "^18.0.1",
     "@adonisjs/repl": "^3.1.11",
     "luxon": "^2.4.0",
