@@ -1,9 +1,12 @@
 import { Attachment } from '@ioc:Adonis/Addons/AttachmentLite'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+
 import User from 'App/Models/User'
 import CreateUserValidator from 'App/Validators/CreateUserValidator'
 import SortValidator from 'App/Validators/SortValidator'
 import UpdateUserValidator from 'App/Validators/UpdateUserValidator'
+import { assignRole } from 'App/utils/roles'
+import { TipoRol } from 'App/Models/Contracts/TipoRol'
 
 export default class UsersController {
   public async index({ request, response }: HttpContextContract) {
@@ -30,7 +33,9 @@ export default class UsersController {
 
     const user = await User.create(validatedData)
 
-    return response.created({ data: user })
+    const { roleName, permissionNames } = await assignRole(user, validatedData.rol || TipoRol.USER)
+
+    return response.created({ data: user, role: roleName, permissions: permissionNames })
   }
 
   public async update({ request, response, params: { id } }: HttpContextContract) {
