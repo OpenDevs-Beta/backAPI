@@ -119,12 +119,13 @@ export default driveConfig({
     |**************************************************************************
     |
     */
-    // gcs: {
-    //   driver: 'gcs',
-    //   visibility: 'public',
-    //   keyFilename: Env.get('GCS_KEY_FILENAME'),
-    //   bucket: Env.get('GCS_BUCKET'),
-
+    gcs: {
+      driver: 'gcs',
+      visibility: 'public',
+      keyFilename: Env.get('GOOGLE_APPLICATION_CREDENTIALS'),
+      bucket: Env.get('GCS_BUCKET'),
+      usingUniformAcl: true,
+    },
     /*
       |--------------------------------------------------------------------------
       | Uniform ACL - Google cloud storage only
@@ -143,7 +144,5 @@ export default driveConfig({
       | console.
       |
       */
-    //   usingUniformAcl: false,
-    // },
   },
 })

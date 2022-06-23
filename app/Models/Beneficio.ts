@@ -6,6 +6,9 @@ export default class Beneficio extends AppBaseModel {
   @column()
   public nombre: string
 
-  @manyToMany(() => Oferta, { pivotTimestamps: true })
+  @manyToMany(() => Oferta, {
+    pivotTable: 'beneficio_oferta',
+    pivotForeignKey: 'beneficio_id',
+  })
   public ofertas: ManyToMany<typeof Oferta>
 }

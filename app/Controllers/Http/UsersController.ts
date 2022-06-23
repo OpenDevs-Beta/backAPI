@@ -1,3 +1,4 @@
+import { Attachment } from '@ioc:Adonis/Addons/AttachmentLite'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
 import CreateUserValidator from 'App/Validators/CreateUserValidator'
@@ -18,6 +19,12 @@ export default class UsersController {
     response.ok({ data: users })
   }
 
+  public async show({ params: { id }, response }: HttpContextContract) {
+    const user = await User.query(id).where('id', id).firstOrFail()
+
+    return response.ok({ data: user })
+  }
+
   public async store({ request, response }: HttpContextContract) {
     const validatedData = await request.validate(CreateUserValidator)
 
@@ -29,8 +36,18 @@ export default class UsersController {
   public async update({ request, response, params: { id } }: HttpContextContract) {
     const user = await User.findOrFail(id)
 
+    const avatar = request.file('avatar')
+    const borraAvatar = request.input('borra_avatar')
+
     const validatedData = await request.validate(UpdateUserValidator)
     user.merge(validatedData)
+
+    console.log(avatar)
+
+    if (avatar) user.avatar = Attachment.fromFile(avatar)
+    else {
+      if (borraAvatar) user.avatar = null
+    }
     await user.save()
 
     return response.created({ data: user })
