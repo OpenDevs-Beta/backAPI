@@ -5,7 +5,7 @@ export default class extends BaseSchema {
 
   public async up() {
     this.schema.alterTable(this.tableName, (table) => {
-      table.string('rol').defaultTo('user').notNullable()
+      table.dropColumn('rol')
     })
   }
 
