@@ -25,7 +25,7 @@ Route.group(() => {
   Route.post('/register', 'UsersController.store')
 
   Route.group(() => {
-    Route.resource('/users', 'UsersController').apiOnly()
+    Route.resource('/users', 'UsersController').except(['store']).apiOnly()
   }).middleware('auth')
 }).prefix('/auth')
 
