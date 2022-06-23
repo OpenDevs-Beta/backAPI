@@ -1,6 +1,8 @@
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
+import { TipoRol } from 'App/Models/Contracts/TipoRol'
+
 export default class CreateUserValidator {
   constructor(protected ctx: HttpContextContract) {}
   public schema = schema.create({
@@ -16,6 +18,7 @@ export default class CreateUserValidator {
     nombreCompleto: schema.string({}, [rules.maxLength(255)]),
     password: schema.string(),
     telefono: schema.string.optional(),
+    rol: schema.enum.optional(Object.values(TipoRol)),
   })
 
   public messages = {}
