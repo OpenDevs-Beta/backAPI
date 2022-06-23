@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class ApiTokens extends BaseSchema {

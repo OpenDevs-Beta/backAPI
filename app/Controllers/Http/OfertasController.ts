@@ -55,7 +55,6 @@ export default class OfertasController {
     response.ok({ data: ofertas })
   }
 
-<<<<<<< HEAD
   public async show({ params: { id }, response }: HttpContextContract) {
     const oferta = await Oferta.query(id)
       .where('id', id)
@@ -116,17 +115,5 @@ export default class OfertasController {
     await oferta.delete()
 
     return response.noContent()
-=======
-  class UsersController {
-    public store({ request }: HttpContextContract) {
-      // Get file from incoming request
-      const avatar = request.file('avatar')!
-      const user = new User()
-  
-      // Make "avatar" field to be attachment
-      user.avatar = Attachment.fromFile(avatar)
-      await user.save()
-    }
->>>>>>> 705fe59666b28bffa5b8032d0f0e1d537bfde782
   }
 }
