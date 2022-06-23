@@ -3,8 +3,15 @@ import { column, beforeSave, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
 import AppBaseModel from './AppBaseModel'
 import Empresa from './Empresa'
 import { attachment, AttachmentContract } from '@ioc:Adonis/Addons/AttachmentLite'
+import { Authorizable } from '@ioc:Verful/Permissions/Mixins'
+import { compose } from '@ioc:Adonis/Core/Helpers'
 
-export default class User extends AppBaseModel {
+const config = {
+  permissionsPivotTable: 'user_permiso',
+  rolesPivotTable: 'user_rol',
+}
+
+export default class User extends compose(AppBaseModel, Authorizable(config)) {
   @column()
   public email: string
 
